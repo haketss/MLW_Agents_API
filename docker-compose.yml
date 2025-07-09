@@ -1,0 +1,12 @@
+
+services:
+  mlw-agents-pg:
+   image: pgvector/pgvector:pg17
+   environment:
+     POSTGRES_USER: mlw_agents
+     POSTGRES_PASSWORD: mlw_agents
+     POSTGRES_DB: mlw_agents
+   ports:
+      - "5432:5432"
+   volumes:
+      - ./docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
