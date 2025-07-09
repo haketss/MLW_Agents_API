@@ -1,0 +1,12 @@
+
+#variables
+@baseUrl = http://localhost:3333
+
+
+# helth check
+GET {{baseUrl}}/health
+
+###
+
+### Fetch all rooms
+GET {{baseUrl}}/rooms
