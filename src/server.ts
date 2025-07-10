@@ -12,7 +12,7 @@ import { sql } from "./db/connection.ts"
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 app.register(fastifyCors, {
-    origin: 'http://localhost:3332',
+    origin: 'http://localhost:3333',
 });
 
 app.setSerializerCompiler(serializerCompiler);
