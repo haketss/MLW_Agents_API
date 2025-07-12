@@ -2,11 +2,39 @@
 #variables
 @baseUrl = http://localhost:3333
 
-
+###
 # helth check
+@helthCheck
 GET {{baseUrl}}/health
 
 ###
-
-### Fetch all rooms
+# Fetch all rooms
+# @name  getRooms
 GET {{baseUrl}}/rooms
+
+###
+# Create a new room
+# @name  createRoom
+POST {{baseUrl}}/rooms
+Content-Type: application/json
+
+{
+    "name": "hohooh",
+    "description": "hohohohohohoho"
+}
+###
+
+@roomId = {{createRoom.response.body.roomId}}
+###
+# get room questions 
+@name = get-room-questions
+GET {{baseUrl}}/rooms/{{roomId}}/questions
+
+###
+# createQuestion
+POST {{baseUrl}}/rooms/{{roomId}}/questions
+content-Type: application/json
+
+{
+    "question": "qual é?"
+}
