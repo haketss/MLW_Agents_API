@@ -22,6 +22,7 @@ export const createQuestionRoute: FastifyPluginCallbackZod = (app) => {
             const result = await db
                 .insert(schema.questions)
                 .values({
+                    // tem que alterar na tabela para poder passar apenas o roomId
                     roomID: roomId,
                     question,
                 }).returning()
