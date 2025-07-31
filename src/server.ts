@@ -32,5 +32,5 @@ app.register(createRoomRoute);
 app.register(getRoomsQuestions);
 app.register(createQuestionRoute);
 app.register(uploadAudioRoute);
-
+console.log('Starting server on port', env.PORT);
 app.listen({ port: env.PORT });

@@ -5,5 +5,4 @@ import { questions } from "./questions.ts";
 export const schema = {
     rooms,
     questions,
-    audioChuncks
 }
