@@ -19,7 +19,19 @@ app.register(fastifyCors, {
     origin: 'http://localhost:5173',
 });
 
-app.register(fastifyMultipart)
+app.register(fastifyMultipart);
+app.register(fastifySwagger, {
+    openapi: {
+        info: {
+            title: 'MLW Agents API',
+            description: 'API for MLW Agents',
+            version: '1.0.0',
+        },
+    },
+});
+app.register(fastifySwaggerUi, {
+    routePrefix: '/docs',
+});
 
 app.setSerializerCompiler(serializerCompiler);
 app.setValidatorCompiler(validatorCompiler);
@@ -32,5 +44,13 @@ app.register(createRoomRoute);
 app.register(getRoomsQuestions);
 app.register(createQuestionRoute);
 app.register(uploadAudioRoute);
-console.log('Starting server on port', env.PORT);
+
+import fastifySwagger from '@fastify/swagger';
+import fastifySwaggerUi from '@fastify/swagger-ui';
+import { pino } from 'pino';
+
+const logger = pino();
+
+logger.info(`Servidor rodando na porta ${process.env.PORT}`);
+
 app.listen({ port: env.PORT });
