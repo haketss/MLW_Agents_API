@@ -47,10 +47,18 @@ app.register(uploadAudioRoute);
 
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
+
 import { pino } from 'pino';
+import pretty from 'pino-pretty';
 
-const logger = pino();
 
-logger.info(`Servidor rodando na porta ${process.env.PORT}`);
+const logger = pino(pretty({
+    colorize: true,
+    translateTime: 'SYS:standard',
+    ignore: 'pid,hostname'
+}));
+
+logger.info('Servidor iniciado com sucesso!');
+logger.info(`Servidor rodando na porta http://localhost:${process.env.PORT}`);
 
 app.listen({ port: env.PORT });
